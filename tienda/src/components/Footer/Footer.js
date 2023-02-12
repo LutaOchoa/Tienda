@@ -9,7 +9,7 @@ class Footer extends Component {
         <div className="social">
           <a
             className="social-github"
-            href="https://github.com/eduardomgonzalez"
+            href=""
             target="blank"
           >
             <GitHub
@@ -20,7 +20,7 @@ class Footer extends Component {
           </a>
           <a
             className="social-linkedin"
-            href="https://www.linkedin.com/in/eduardo-gonzalez01/"
+            href=""
             target="blank"
           >
             <LinkedIn
@@ -32,10 +32,10 @@ class Footer extends Component {
         </div>
 
         <div className="copyright">
-          © 2020 Copyright
-          <a href="https://eduardo-gonzalez-portafolio.now.sh/" target="blank">
+          © 2023 Copyright
+          <a href="" target="blank">
             {" "}
-            Eduardo González
+            
           </a>
         </div>
       </footer>
