@@ -1,15 +1,28 @@
-import './Item.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import "./Item.scss";
 
-const Item = ({producto}) => {
+const Item = ({ product }) => {
+  const { name, description, price, image } = product;
+
   return (
-    <li  width="150" className='product'>
-        <img alt={producto.title } src={producto.image} width="150"/>
-        <h2>{producto.title }</h2>
-        <h3>{producto.category }</h3>
-        <h3>{producto.description }</h3>
-    </li>
+    <div className="link">
+      <Link to={`/item/${product.id}`}>
+        <div className="counter link__item" style={{ width: "15rem" }}>
+          <div className="counter__content">
+            <h5 className="card-title">{name}</h5>
+            <img
+              src={image}
+              className="card-img-top"
+              alt="Imagen de Producto"
+            />
+            <p>{description}</p>
+            <h6>${price}</h6>
+          </div>
+        </div>
+      </Link>
+    </div>
+  );
+};
 
-  )
-}
-
-export default Item
+export default Item;

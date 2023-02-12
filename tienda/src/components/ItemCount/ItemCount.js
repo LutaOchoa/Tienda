@@ -1,37 +1,45 @@
-import './style.css';
-import { useState } from 'react';
+import React, { useState, useEffect } from "react";
+import RemoveIcon from "@material-ui/icons/Remove";
+import AddIcon from "@material-ui/icons/Add";
 
+import "./ItemCount.scss";
 
-const ItemCount = () => {
-    const [contador,setContador]=useState(0);
-    const stock=4;
-    const sumar = () => {
-        if(stock===contador){
-            return
-        }
-        setContador(contador+1)
-    };
-    const restar = () => {
-        if(contador===0){
-            return
-        }
-        setContador(contador-1)
-    };
+const ItemCount = ({ initial, min, max, setQuantity }) => {
+  const [counter, setCounter] = useState(initial);
+
+  const handleIncrement = () => {
+    counter < max ? setCounter(counter + 1) : console.log("Máximo alcanzado");
+  };
+
+  const handleDecrement = () => {
+    counter > min ? setCounter(counter - 1) : console.log("Mínimo alcanzado");
+  };
+
+  useEffect(() => {
+    setQuantity(counter);
+  }, [counter, setQuantity]);
 
   return (
-    <div className='counter'>
-        <div className='controllers'>
-            <button onClick={() => restar()}>-</button>
-            <div>
-                <span>{contador}</span>
-            </div>
-            <button onClick={() => sumar()}>+</button>
+    <div className="counter" style={{ width: "15rem" }}>
+      <div className="counter__content">
+        <div className="counter__content-controls">
+          <span
+            className="counter__content-controls-subtract"
+            onClick={handleDecrement}
+          >
+            <RemoveIcon />
+          </span>
+          <span className="counter__content-controls-value"> {counter} </span>
+          <span
+            className="counter__content-controls-add"
+            onClick={handleIncrement}
+          >
+            <AddIcon />
+          </span>
         </div>
-        <div>
-            <button>Agregar al carrito</button>
-        </div>
+      </div>
     </div>
   );
 };
 
-export default ItemCount
+export default ItemCount;
